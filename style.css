@@ -1,0 +1,314 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+font-size:17px;
+}
+
+body{
+font-family:Poppins, sans-serif;
+color:white;
+overflow-x:hidden;
+
+background:linear-gradient(135deg,#0f172a,#1e293b,#0b1220);
+background-size:300% 300%;
+animation:bgShift 10s ease infinite;
+}
+
+@keyframes bgShift{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 6%;
+background:#020617;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:20px;
+font-weight:900;
+letter-spacing:1px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 12px;
+font-size:15px;
+opacity:0.85;
+transition:0.3s;
+}
+
+nav a:hover{
+opacity:1;
+border-bottom:2px solid #22c55e;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+position:relative;
+min-height:85vh;
+display:flex;
+align-items:center;
+padding:80px 6%;
+background:url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438") center/cover no-repeat;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.65);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+width:100%;
+display:grid;
+grid-template-columns:1.3fr 1fr;
+gap:40px;
+}
+
+.hero-left h1{
+font-size:72px;
+font-weight:900;
+line-height:1.05;
+
+background:linear-gradient(90deg,#22c55e,#0ea5e9,#f59e0b);
+-webkit-background-clip:text;
+background-clip:text;
+
+-webkit-text-fill-color:transparent;
+color:transparent;
+}
+
+.hero-left p{
+font-size:20px;
+line-height:1.7;
+color:#cbd5e1;
+margin-top:15px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+padding:70px 6%;
+max-width:1100px;
+margin:25px auto;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+
+border-radius:16px;
+border:1px solid rgba(255,255,255,0.08);
+position:relative;
+}
+
+.section::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:5px;
+background:linear-gradient(90deg,#22c55e,#0ea5e9,#f59e0b);
+border-radius:16px 16px 0 0;
+}
+
+.section h2{
+font-size:38px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.section p{
+font-size:18px;
+line-height:1.8;
+color:#e2e8f0;
+margin-bottom:12px;
+}
+
+/* =========================
+   GRID + CARDS
+========================= */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:14px;
+}
+
+.card{
+background:rgba(255,255,255,0.07);
+padding:18px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+background:rgba(255,255,255,0.12);
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+padding:30px 6%;
+}
+
+.products img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.products .card h3{
+font-size:18px;
+margin-top:10px;
+}
+
+.products .card p{
+font-size:15px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+display:inline-block;
+padding:10px 14px;
+border-radius:10px;
+font-size:14px;
+text-decoration:none;
+margin-top:10px;
+}
+
+.primary{
+background:#22c55e;
+color:white;
+}
+
+/* =========================
+   CONTACT FIX (CLEAN & FINAL)
+========================= */
+
+.contact-card{
+padding:18px;
+border-radius:14px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.15);
+}
+
+/* FORCE ALL LINK STATES */
+.contact-card a,
+.contact-card a:link,
+.contact-card a:visited,
+.contact-card a:active{
+color:#ffffff !important;
+text-decoration:none !important;
+font-size:17px;
+font-weight:700;
+opacity:0.95;
+display:inline-block;
+transition:0.3s ease;
+}
+
+/* HOVER EFFECT */
+.contact-card a:hover{
+color:#22c55e !important;
+opacity:1;
+transform:translateY(-2px);
+text-decoration:none !important;
+}
+
+/* =========================
+   FLOATING BUTTONS (UNCHANGED)
+========================= */
+
+.floating{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#22c55e;
+color:white;
+padding:14px 16px;
+border-radius:30px;
+font-size:14px;
+text-decoration:none;
+}
+
+.floating-email{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#0ea5e9;
+color:white;
+padding:14px 16px;
+border-radius:30px;
+font-size:14px;
+text-decoration:none;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+background:#020617;
+text-align:center;
+padding:25px;
+font-size:14px;
+color:#94a3b8;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero-left h1{
+font-size:44px;
+}
+
+.hero-left p{
+font-size:17px;
+}
+
+.section h2{
+font-size:28px;
+}
+
+.section p{
+font-size:16px;
+}
+}
