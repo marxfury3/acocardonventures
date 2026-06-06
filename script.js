@@ -1,74 +1,45 @@
+// =========================
+// SAFE PAGE INIT
+// =========================
+
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================
-     SCROLL REVEAL SYSTEM
-  ========================= */
+  // Prevent horizontal scroll caused by JS-injected elements
+  document.body.style.overflowX = "hidden";
 
-  const revealElements = document.querySelectorAll(".reveal");
+  // =========================
+  // REVEAL ON SCROLL (SAFE)
+  // =========================
+
+  const reveals = document.querySelectorAll(".reveal");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+        entry.target.classList.add("active");
       }
     });
   }, {
-    threshold: 0.12
+    threshold: 0.1
   });
 
-  revealElements.forEach(el => observer.observe(el));
+  reveals.forEach(el => observer.observe(el));
 
+  // =========================
+  // FORCE RESPONSIVE IMAGES SAFETY
+  // =========================
 
-  /* =========================
-     SMOOTH SCROLL FOR LINKS
-  ========================= */
-
-  const links = document.querySelectorAll("a[href^='#']");
-
-  links.forEach(link => {
-    link.addEventListener("click", function(e) {
-      const targetId = this.getAttribute("href");
-
-      if (targetId.length > 1) {
-        e.preventDefault();
-
-        const target = document.querySelector(targetId);
-
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 60,
-            behavior: "smooth"
-          });
-        }
-      }
-    });
+  document.querySelectorAll("img").forEach(img => {
+    img.style.maxWidth = "100%";
+    img.style.height = "auto";
   });
 
+  // =========================
+  // PREVENT LONG TEXT BREAKING LAYOUT
+  // =========================
 
-  /* =========================
-     ACTIVE NAV HIGHLIGHT (OPTIONAL)
-  ========================= */
-
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll("nav a");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      if (scrollY >= sectionTop - 100) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
-    });
+  document.querySelectorAll(".card, .section").forEach(el => {
+    el.style.overflow = "hidden";
   });
 
 });
